@@ -26,11 +26,11 @@ class Wire(object):
         # If wires are parallel, no intersections
         if self.is_vertical == other.is_vertical:
             assert not ((self.x == other.x and self.x != 0 and self.x is not None)
-                    or (self.y == other.y and self.y != 0 and self.y is not None)), 'coincident lines encountered'
+                    or  (self.y == other.y and self.y != 0 and self.y is not None)), 'coincident lines encountered'
             return None
 
         other_low_x, other_high_x, other_low_y, other_high_y = Wire.bounding_points(other)
-        self_low_x, self_high_x, self_low_y, self_high_y = Wire.bounding_points(self)
+        self_low_x,  self_high_x,  self_low_y,  self_high_y  = Wire.bounding_points(self)
 
         # Check this line being vertical and other horizontal
         if self.is_vertical:
@@ -138,10 +138,10 @@ if __name__ == '__main__':
     v2 = get_manhattan_dist('testp1.txt')
     v3 = get_path_dist('testp2.txt') 
     v4 = get_manhattan_dist('testp2.txt')
-    print(v1, '<-', 610)
-    print(v2, '<-', 159)
-    print(v3, '<-', 410)
-    print(v4, '<-', 135)
+    print(v1, '=', 610)
+    print(v2, '=', 159)
+    print(v3, '=', 410)
+    print(v4, '=', 135)
 
     min_dist = get_manhattan_dist('paths.txt')
     pathlen = get_path_dist('paths.txt')
