@@ -46,6 +46,36 @@ def opcode(r: list):
             print(get_v(pc + 1, gord(pms, 0)))
             pc += 2
 
+        elif opcode == '05':
+            # Jump if not zero
+            if get_v(pc + 1, gord(pms, 0)) != 0:
+                pc = get_v(pc + 2, gord(pms, 1))
+            else:
+                pc += 3
+
+        elif opcode == '06':
+            # Jump if zero
+            if get_v(pc + 1, gord(pms, 0)) == 0:
+                pc = get_v(pc + 2, gord(pms, 1))
+            else:
+                pc += 3
+
+        elif opcode == '07':
+            # Less than
+            if get_v(pc + 1, gord(pms, 0)) < get_v(pc + 2, gord(pms, 1)):
+                f[f[pc + 3]] = 1
+            else:
+                f[f[pc + 3]] = 0
+            pc += 4
+
+        elif opcode == '08':
+            # Less than
+            if get_v(pc + 1, gord(pms, 0)) == get_v(pc + 2, gord(pms, 1)):
+                f[f[pc + 3]] = 1
+            else:
+                f[f[pc + 3]] = 0
+            pc += 4
+
         elif opcode == '99':
             # Program is done
             break
